@@ -47,8 +47,8 @@ foreach ($array as $key => $value){
 $dagen = ['ma'=>'maandag','di'=>'dinsdag','wo'=>'woensdag','do'=>'donderdag','vr'=>'vrijdag']; // key => value
 ?>
 ...
-<label>Selecteer een dag</label>
-<select name="dag">
+<label id="dag">Selecteer een dag</label>
+<select id="dag" name="dag">
     <?php foreach ($dagen as $afkorting => $dag): ?>
         <option value="<?= $afkorting ?>"><?= $dag ?></option>
     <?php endforeach; ?>
