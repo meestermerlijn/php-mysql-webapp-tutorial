@@ -6,7 +6,7 @@ view("parts/navigatie-menu");
     <div class="sm:mx-10">
     <h1 class="text-3xl my-4">About</h1>
 
-    <p class="text-red mb-4"><?= $zin ?></p>
+    <p class="text-red mb-4"><?= htmlspecialchars($zin) ?></p>
 
     <form>
         <label for="naam">Naam</label>

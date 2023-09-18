@@ -35,9 +35,7 @@ function config(string $param): string
 
 function view(string $file, array $vars = [])
 {
-    foreach ($vars as $k => $var) {
-        ${$k} = $var;
-    }
+    extract($vars);
     if (file_exists(__DIR__ . "/../app/views/" . $file . ".view.php")) {
 
         require __DIR__ . "/../app/views/" . $file . ".view.php";

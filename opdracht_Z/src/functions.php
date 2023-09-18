@@ -40,27 +40,24 @@ function config(string $param): string
  * */
 function view(string $file, array $vars = [])
 {
-    foreach ($vars as $k => $var) {
-        ${$k} = $var;
-    }
+    extract($vars);
     if (file_exists(__DIR__ . "/../app/views/" . $file . ".view.php")) {
 
         require __DIR__ . "/../app/views/" . $file . ".view.php";
     } else {
         if (file_exists(__DIR__ . "/../src/views/" . $file . ".view.php")) {
             require __DIR__ . "/../src/views/" . $file . ".view.php";
-        }else{
-            dd('required view: /app/views/' . $file . ".view.php". ' not found');
+        } else {
+            dd('required view: /app/views/' . $file . ".view.php" . ' not found');
         }
     }
 }
 
 
-
 // Heeft de ingelogde gebruiker een bepaalde rol
 function hasRole($role): bool
 {
-    return ($_SESSION['user']??false) and ($_SESSION['user']['role'] ?? '') == $role;
+    return ($_SESSION['user'] ?? false) and ($_SESSION['user']['role'] ?? '') == $role;
 }
 
 //betreft het een ingelogde gebruiker?
@@ -74,8 +71,8 @@ function isLogin(): bool
 function user(): ?object
 {
     return $_SESSION['user']
-     ? (object) $_SESSION['user']
-        :null;
+        ? (object)$_SESSION['user']
+        : null;
 }
 
 //zal een flash message tonen aan de gebruiker, de opmaak is aan te passen in parts/footer.view
@@ -129,13 +126,18 @@ function getNonce(): string
 }
 
 // faken van PUT, DELETE, PATCH method bij het versturen van een formulier
-function method_put():string{
+function method_put(): string
+{
     return "<input type=\"hidden\" name=\"_method\" value=\"PUT\">";
 }
-function method_delete():string{
+
+function method_delete(): string
+{
     return "<input type=\"hidden\" name=\"_method\" value=\"DELETE\">";
 }
-function method_patch():string{
+
+function method_patch(): string
+{
     return "<input type=\"hidden\" name=\"_method\" value=\"PATCH\">";
 }
 
