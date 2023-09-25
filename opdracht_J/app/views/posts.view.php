@@ -22,7 +22,7 @@ view("parts/navigatie-menu");
                         <input type="submit" value="wijzig" name="update" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
                     </form>
 
-                    <form method="post" action="/post-delete">
+                    <form method="post" action="/post-destroy">
                         <?= csrf() ?>
                         <input type="hidden" name="id" value="<?= $post['id'] ?>">
                         <input type="submit" value="Verwijder" name="delete" class="border bg-red-600 text-white border-1 rounded-md px-2 py-1 hover:bg-red-300 cursor-pointer">

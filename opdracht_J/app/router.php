@@ -10,7 +10,7 @@ $route->get('about', "controllers/about.php");
 $route->get('posts', "controllers/posts.php");
 $route->get('post-create', "views/post-create.view.php");
 $route->post('post-store', "controllers/post-store.php");
-$route->post('post-delete', "controllers/post-delete.php");
+$route->post('post-destroy', "controllers/post-destroy.php");
 $route->get('post-edit/{id}', "controllers/post-edit.php");
 $route->post('post-update/{id}', "controllers/post-update.php");
 
