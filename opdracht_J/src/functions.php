@@ -47,3 +47,15 @@ function view(string $file, array $vars = [])
         }
     }
 }
+
+//zal een flash message tonen aan de gebruiker, de opmaak is aan te passen in parts/footer.view
+function flash(string $msg, bool $succes = true, $duration = 2500): void
+{
+    $_SESSION['flash']['msg'] = $msg;
+    $_SESSION['flash']['duration'] = $duration;
+    if ($succes) {
+        $_SESSION['flash']['success'] = $msg;
+    } else {
+        $_SESSION['flash']['error'] = $msg;
+    }
+}

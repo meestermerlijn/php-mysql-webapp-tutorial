@@ -12,6 +12,7 @@ if ($_POST != null) {
     ]);
 
     //hier kan je alleen komen als de query goed is uitgevoerd
+    flash("Post is opgeslagen", true, 3000);
 
     // doorsturen naar posts pagina
     header("Location: /posts");
