@@ -1,8 +1,5 @@
 <?php
 //Let op in onderstaande code wordt ervan uitgegaan dat in de index.php de volgende code staat:
-////////////////////////////////////////
-/// Configuratie parameters inladen ////
-////////////////////////////////////////
 session_start();
 $config = require __DIR__ . "/../app/config.php";
 
@@ -11,6 +8,9 @@ require __DIR__ . "/../src/functions.php";
 
 //Database class
 require __DIR__ . "/../src/Database.php";
+
+//csrf protection
+require __DIR__ . "/../src/csrf.php";
 
 //routes
 require __DIR__ . "/../app/router.php";
@@ -162,6 +162,24 @@ $db->query("DELETE FROM posts WHERE id = :id", [
     'id' => 1
 ]);
 
+//sql queries select, insert, update, delete voorbeelden
+//select
+$db->query("SELECT * FROM posts")->fetchAll();
+$db->query("SELECT * FROM posts WHERE id = ?", [1])->fetch();
+$db->query("SELECT * FROM posts WHERE id = :id", ['id' => 1])->fetch();
+//insert
+$db->query("INSERT INTO posts (title, content) VALUES (?, ?)", ["Mijn titel", "Mijn content"]);
+$db->query("INSERT INTO posts (title, content) VALUES (:title, :content)", ['title' => "Mijn titel", 'content' => "Mijn content"]);
+//update
+$db->query("UPDATE posts SET title = ?, content = ? WHERE id = ?", ["Mijn titel", "Mijn content", 1]);
+$db->query("UPDATE posts SET title = :title, content = :content WHERE id = :id", ['title' => "Mijn titel", 'content' => "Mijn content", 'id' => 1]);
+//delete
+$db->query("DELETE FROM posts WHERE id = ?", [1]);
+$db->query("DELETE FROM posts WHERE id = :id", ['id' => 1]);
+
+//flash message tonen
+flash("Post is opgeslagen", true, 3000); //true = succes, 3000 = 3 seconden
+
 ?>
     <!--
         ////////////////////////////////////////
@@ -172,12 +190,14 @@ $db->query("DELETE FROM posts WHERE id = :id", [
         Formulier maken (voorbeeld
          action: de url waar het formulier naartoe moet
          method: de methode die gebruikt moet worden (get of post)
+         csrf: de csrf token (voor veiligheid)
          name: de naam van het veld (wordt gebruikt om de waarde op te halen)
          value: de waarde van het veld
          placeholder: de tekst die in het veld wordt getoond
          required: het veld is verplicht
          type: het type veld (text, password, email, number, date, time, url, color, range, search, tel) -->
     <form action="/posts" method="post">
+        <?= csrf() ?>
         <input type="text" name="title" placeholder="Titel" required>
         <textarea name="content" placeholder="Content"></textarea>
         <input type="submit" value="Opslaan">

@@ -29,7 +29,14 @@ if ($uri == "post-delete") {
     require "controllers/post-delete.php";
     die();
 }
-
+if ($uri == "post-edit") {
+    require "controllers/post-edit.php";
+    die();
+}
+if ($uri == "post-update") {
+    require "controllers/post-update.php";
+    die();
+}
 http_response_code(404);
 require __DIR__ . "/../src/views/404.view.php";
 die();

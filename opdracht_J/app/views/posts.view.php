@@ -17,11 +17,19 @@ view("parts/navigatie-menu");
                 <h2 class="font-bold"><?= htmlspecialchars($post['title']) ?></h2>
                 <?= htmlspecialchars($post['content']) ?>
 
-                <form method="post" action="/post-delete">
-                    <?= csrf() ?>
-                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
-                    <input type="submit" value="Verwijder" name="delete" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
-                </form>
+                <div class="flex justify-between">
+                    <form method="post" action="/post-edit">
+                        <?= csrf() ?>
+                        <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                        <input type="submit" value="wijzig" name="update" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
+                    </form>
+
+                    <form method="post" action="/post-delete">
+                        <?= csrf() ?>
+                        <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                        <input type="submit" value="Verwijder" name="delete" class="border bg-red-600 text-white border-1 rounded-md px-2 py-1 hover:bg-red-300 cursor-pointer">
+                    </form>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
