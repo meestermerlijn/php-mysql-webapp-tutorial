@@ -25,7 +25,7 @@ class Database
         }
     }
 
-    public function query($sql, $params = [])
+    public function query(string $sql, array $params = [])
     {
         try { //probeer de query uit te voeren
 

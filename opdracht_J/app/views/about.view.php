@@ -8,7 +8,7 @@ view("parts/navigatie-menu");
 
     <p class="text-red mb-4"><?= htmlspecialchars($zin) ?></p>
 
-    <form>
+    <form method="get">
         <label for="naam">Naam</label>
         <input type="text" id="naam" name="naam" class="rounded-md">
         <br>

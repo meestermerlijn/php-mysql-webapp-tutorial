@@ -4,6 +4,11 @@ view("parts/navigatie-menu");
 ?>
     <div class="sm:mx-10">
         <h1 class="text-3xl my-4">Home</h1>
+        <form action="/posts" method="get">
+            <input type="text" id="search" name="search" class="rounded-md">
+            <input type="submit" value="Zoek" name="verstuur" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
+        </form>
+        
         <?php
         foreach ($posts as $post) {
             ?>
