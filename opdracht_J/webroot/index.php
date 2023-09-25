@@ -9,6 +9,9 @@ require __DIR__ . "/../src/functions.php";
 //Database class
 require __DIR__ . "/../src/Database.php";
 
+//Database class
+require __DIR__ . "/../src/Route.php";
+
 //csrf protection
 require __DIR__ . "/../src/csrf.php";
 

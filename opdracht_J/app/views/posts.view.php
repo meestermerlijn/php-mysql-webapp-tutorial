@@ -18,9 +18,7 @@ view("parts/navigatie-menu");
                 <?= htmlspecialchars($post['content']) ?>
 
                 <div class="flex justify-between">
-                    <form method="post" action="/post-edit">
-                        <?= csrf() ?>
-                        <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                    <form method="get" action="/post-edit/<?= $post['id'] ?>">
                         <input type="submit" value="wijzig" name="update" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
                     </form>
 

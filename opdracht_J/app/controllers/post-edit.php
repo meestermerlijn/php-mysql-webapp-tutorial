@@ -1,10 +1,10 @@
 <?php
-if ($_POST != null and $_POST['id']) {
+if ($_GET != null and $_GET['id']) {
 
     $db = new Database();
 
     $result = $db->query("SELECT * FROM posts WHERE id=?", [
-        $_POST['id']
+        $_GET['id']
     ])->fetch();
 
     view("post-update", [
