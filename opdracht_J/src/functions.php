@@ -59,3 +59,31 @@ function flash(string $msg, bool $succes = true, $duration = 2500): void
         $_SESSION['flash']['error'] = $msg;
     }
 }
+
+//controle van de csrf token
+function validateToken(): bool
+{
+    if (in_array($_POST['_token'] ?? '', $_SESSION['tokens'] ?? [])) {
+        $_SESSION['tokens'] = []; //alle tokens wissen, zodat ze niet hergebruikt kunnen worden
+        return true;
+    }
+    if (isset($_SERVER['HTTP_X_CSRF_TOKEN'])) {
+        if ($_SERVER['HTTP_X_CSRF_TOKEN'] == ($_SESSION['api_token'] ?? "")) {
+            return true;
+        }
+    }
+    return false;
+}
+
+//Voor het aanmaken van een token voor je formulier
+function csrf($field = true): string
+{
+    $bytes = random_bytes(256);
+    $token = bin2hex($bytes);
+    $_SESSION['tokens'][] = $token;
+    if ($field) {
+        return "<input type=\"hidden\" name=\"_token\" value=\"$token\">";
+    } else {
+        return $token;
+    }
+}

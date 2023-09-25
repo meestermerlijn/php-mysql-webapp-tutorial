@@ -11,13 +11,19 @@ view("parts/navigatie-menu");
         </form>
 
         <?php
-        foreach ($posts as $post) {
+        foreach ($posts as $post):
             ?>
             <div class="border border-1 rounded p-4 bg-gray-50">
                 <h2 class="font-bold"><?= htmlspecialchars($post['title']) ?></h2>
                 <?= htmlspecialchars($post['content']) ?>
+
+                <form method="post" action="/post-delete">
+                    <?= csrf() ?>
+                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                    <input type="submit" value="Verwijder" name="delete" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
+                </form>
             </div>
-        <?php } ?>
+        <?php endforeach; ?>
     </div>
 <?php
 view("parts/footer");

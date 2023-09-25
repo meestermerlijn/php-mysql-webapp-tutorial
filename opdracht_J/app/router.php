@@ -25,6 +25,10 @@ if ($uri == "post-create") {
     require "controllers/post-create.php";
     die();
 }
+if ($uri == "post-delete") {
+    require "controllers/post-delete.php";
+    die();
+}
 
 http_response_code(404);
 require __DIR__ . "/../src/views/404.view.php";
