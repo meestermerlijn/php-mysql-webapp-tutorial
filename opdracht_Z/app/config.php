@@ -1,7 +1,7 @@
 <?php
 return [
     'app' => [
-        'env' => 'local', //'production' zal foutmeldingen minimaliseren
+        'env' => 'dev', //'production' zal foutmeldingen minimaliseren
         'name' => 'Code Wizards',
         'email' => 'info@code-wizards.nl',
     ],

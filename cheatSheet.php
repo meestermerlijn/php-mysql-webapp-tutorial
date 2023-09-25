@@ -163,47 +163,50 @@ $db->query("DELETE FROM posts WHERE id = :id", [
 ]);
 
 ?>
+    <!--
+        ////////////////////////////////////////
+        /////////////// Formulieren ////////////
+        ////////////////////////////////////////
 
-    ////////////////////////////////////////
-    /////////////// Formulieren ////////////
-    ////////////////////////////////////////
 
-
-    //Formulier maken (voorbeeld
-    // action: de url waar het formulier naartoe moet
-    // method: de methode die gebruikt moet worden (get of post)
-    // name: de naam van het veld (wordt gebruikt om de waarde op te halen)
-    // value: de waarde van het veld
-    // placeholder: de tekst die in het veld wordt getoond
-    // required: het veld is verplicht
-    // type: het type veld (text, password, email, number, date, time, url, color, range, search, tel)
+        Formulier maken (voorbeeld
+         action: de url waar het formulier naartoe moet
+         method: de methode die gebruikt moet worden (get of post)
+         name: de naam van het veld (wordt gebruikt om de waarde op te halen)
+         value: de waarde van het veld
+         placeholder: de tekst die in het veld wordt getoond
+         required: het veld is verplicht
+         type: het type veld (text, password, email, number, date, time, url, color, range, search, tel) -->
     <form action="/posts" method="post">
         <input type="text" name="title" placeholder="Titel" required>
         <textarea name="content" placeholder="Content"></textarea>
         <input type="submit" value="Opslaan">
     </form>
 
-    //input fields
-    //text
+    <!-- input fields -->
+    <!-- text -->
     <input type="text" name="title" placeholder="Titel">
-    //password
+    <!-- password -->
     <input type="password" name="password" placeholder="Wachtwoord">
-    //email
+    <!-- email -->
     <input type="email" name="email" placeholder="E-mailadres">
-    //number
+    <!-- number -->
     <input type="number" name="age" placeholder="Leeftijd">
-    //date
+    <!-- date -->
     <input type="date" name="date" placeholder="Datum">
-    //time
+    <!-- time -->
     <input type="time" name="time" placeholder="Tijd">
-    //url
+    <!-- url -->
     <input type="url" name="url" placeholder="URL">
-    //color
+    <!-- color -->
     <input type="color" name="color" placeholder="Kleur">
-    //range
+    <!-- range -->
     <input type="range" name="range" placeholder="Range">
 
-    //selectbox
+    <!-- textarea -->
+    <textarea name="content" placeholder="Content..."></textarea>
+
+    <!-- selectbox -->
     <select name="contry">
         <option value=""></option>
         <option value="NL">Nederland</option>
@@ -213,7 +216,7 @@ $db->query("DELETE FROM posts WHERE id = :id", [
         <option value="UK">Engeland</option>
     </select>
 
-    //met een voorgeselecteerde option
+    <!-- met een voorgeselecteerde option -->
     <select name="contry">
         <option value=""></option>
         <option value="NL" selected>Nederland</option>
@@ -221,14 +224,22 @@ $db->query("DELETE FROM posts WHERE id = :id", [
         ...
     </select>
 
-    //checkbox
+    <!-- checkbox -->
     <input type="checkbox" name="terms" value="1">
 
-    //radiobuttons
+    <!-- radiobuttons -->
     <input type="radio" name="sex" value="M">Man<br>
     <input type="radio" name="sex" value="V">Vrouw<br>
     <input type="radio" name="sex" value="X">Anders<br>
 
+    <!-- hidden field -->
+    <input type="hidden" name="id" value="1">
+
+    <!-- submit button -->
+    <input type="submit" value="Opslaan" name="save">
+
+    <!-- of button -->
+    <button type="submit" name="save">Opslaan</button>
 <?php
 ////////////////////////////////////////
 /////////////// Sessions ///////////////

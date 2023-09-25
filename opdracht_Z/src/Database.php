@@ -6,7 +6,7 @@ class Database
     private $connection;
 
     //wordt aangeroepen als je een nieuw database object aanmaakt
-    public function __construct($database)
+    public function __construct()
     {
         $dns = "mysql:host=" . config('database.host') . ";" .
             "port=" . config('database.port') . ";" .
@@ -16,7 +16,7 @@ class Database
         try { //probeer een verbinding te maken
             $this->connection = new PDO($dns, config('database.user'), config('database.password'), [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ]);
         } catch (Exception $e) { //als het niet lukt dan...
             $this->showException($e);
@@ -38,6 +38,8 @@ class Database
             return $query;
         } catch (Exception $e) { //als het niet lukt dan ...
             $this->showException($e);
+        } catch (Error $e) {
+            $this->showException($e);
         }
     }
 
@@ -50,9 +52,9 @@ class Database
     private function showException($exception)
     {
         //Alleen in productie
-        if(config('app.env')!='production'){
+        if (config('app.env') != 'production') {
             dd($exception->getMessage());
-        }else{
+        } else {
             echo "Er is een fout opgetreden, ga <a href='/'>terug</a> naar de website";
             die();
         }

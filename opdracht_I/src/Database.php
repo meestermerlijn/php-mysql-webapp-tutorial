@@ -16,7 +16,7 @@ class Database
         try { //probeer een verbinding te maken
             $this->connection = new PDO($dns, config('database.user'), config('database.password'), [
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ]);
         } catch (Exception $e) { //als het niet lukt dan...
             $this->showException($e);
@@ -25,7 +25,7 @@ class Database
         }
     }
 
-    public function query(string $sql, array $params = [])
+    public function query($sql, $params = [])
     {
         try { //probeer de query uit te voeren
 
@@ -37,6 +37,8 @@ class Database
 
             return $query;
         } catch (Exception $e) { //als het niet lukt dan ...
+            $this->showException($e);
+        } catch (Error $e) {
             $this->showException($e);
         }
     }

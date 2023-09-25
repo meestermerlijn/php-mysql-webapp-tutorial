@@ -2,7 +2,7 @@
 
 $db = new Database();
 
-if ($_GET['verstuur'] != null) {
+if ($_GET != null) {
 
     //zoeken in de posts tabel naar de ingevoerde zoekterm
     //let op onderstaande query zou werken maar is niet veilig tegen SQL injection
