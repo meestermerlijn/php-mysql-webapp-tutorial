@@ -79,7 +79,35 @@ foreach ($personen as $persoon) {
     echo $persoon["voornaam"] . "<br>";
 }
 
-//gebruik van een functie
+/////////////////////////////////////////////////
+/// PHP functies ////////////////////////////////
+/////////////////////////////////////////////////
+// Hieronder een aantal veel gebruikte php functies
+
+// lengte van een string: strlen($var)
+$naam = "Maurice";
+echo strlen($naam); //geeft 7
+
+// string omzetten naar hoofdletters: strtoupper($var)
+$naam = "Maurice";
+echo strtoupper($naam); //geeft MAURICE
+
+// string omzetten naar kleine letters: strtolower($var)
+$naam = "Maurice";
+echo strtolower($naam); //geeft maurice
+
+// spaties voor en na de invoer weghalen: trim($var)
+$naam = " Maurice ";
+echo trim($naam); //geeft Maurice
+
+// string vervangen: str_replace($search, $replace, $subject)
+$naam = "Maurice";
+echo str_replace("Maurice", "John", $naam); //geeft John
+
+//////////////////////////////////////////////////
+/// Zelf functies maken //////////////////////////
+//////////////////////////////////////////////////
+
 function getFullName($voornaam, $achternaam)
 {
     return $voornaam . " " . $achternaam;
@@ -358,3 +386,19 @@ echo $persoon->getFullName();
     <h1><?= htmlspecialchars($naam) ?></h1> (veilig)
 
 <?php
+///////////////////////////////////////////
+/// Validators /////////////////////////////
+/// ////////////////////////////////////////
+///
+Validator::required($var);         // $var is niet leeg
+Validator::integer($var);          // $var is een geheel getal
+Validator::length($var, $min, $max); // $var heeft een string lengte tussen $min en $max (inclusief)
+Validator::email($var);            // $var is een geldig email adres
+Validator::url($var);              // $var is een geldige url
+Validator::date($var);             // $var is een geldige datum
+Validator::min($var, $min);         // $var is hoger of gelijk aan $min
+Validator::max($var, $max);         // $var is lager of gelijk aan $max
+Validator::between($var, $min, $max); // $var zit tussen $min en $max (inclusief)
+Validator::in($var, $array);       // $var komt voor in de array $array
+Validator::notIn($var, $array);     // $var komt niet voor in de array $array
+Validator::regex($var, $regex);     // $var voldoet aan de gegeven regex expressie

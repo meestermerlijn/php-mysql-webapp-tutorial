@@ -1,4 +1,9 @@
 <?php
+require "../src/Validator.php";
+
+if (!Validator::required($_POST['title'])) {
+    $errors['title'] = "Titel mag niet leeg zijn";
+}
 $db = new Database();
 
 // in $errors worden de foutmeldingen opgeslagen
