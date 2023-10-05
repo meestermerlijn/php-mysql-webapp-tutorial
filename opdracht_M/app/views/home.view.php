@@ -10,5 +10,12 @@ view("parts/navigatie-menu");
             <?= htmlspecialchars($content) ?>
         </div>
     </div>
+
+<?= $user->name ?> heeft de volgende posts:
+    <ul class="list-disc">
+        <?php foreach ($user->posts() as $post): ?>
+            <li class="ml-4"><?= $post['title'] ?></li>
+        <?php endforeach; ?>
+    </ul>
 <?php
 view("parts/footer");
