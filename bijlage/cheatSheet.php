@@ -79,6 +79,15 @@ foreach ($personen as $persoon) {
     echo $persoon["voornaam"] . "<br>";
 }
 
+//loop door een array binnen html
+?>
+    <ul>
+        <?php foreach ($personen as $persoon): ?>
+            <li><?= $persoon["voornaam"] ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php
+
 /////////////////////////////////////////////////
 /// PHP functies ////////////////////////////////
 /////////////////////////////////////////////////
@@ -129,6 +138,16 @@ if ($leeftijd > 18) {
     echo "Je bent jonger dan 18";
 }
 
+//gebruik van if else in html
+?>
+    <div>
+        <?php if ($leeftijd > 18): ?>
+            <h1>Je bent ouder dan 18</h1>
+        <?php else: ?>
+            <h1>Je bent jonger dan 18</h1>
+        <?php endif; ?>
+    </div>
+<?php
 //gebruik van switch
 $leeftijd = 45;
 switch ($leeftijd) {

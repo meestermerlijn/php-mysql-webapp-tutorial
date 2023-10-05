@@ -33,11 +33,6 @@ function config(string $param): string
     return $result;
 }
 
-/*
- * Er zal eerst in de app directory naar een view worden gezocht.
- * Indien deze niet bestaat, zal deze uit de src directory worden gebruikt.
- * Indien daar ook niet aanwezig dat een 'not found' melding
- * */
 function view(string $file, array $vars = [])
 {
     extract($vars);
@@ -51,28 +46,6 @@ function view(string $file, array $vars = [])
             dd('required view: /app/views/' . $file . ".view.php" . ' not found');
         }
     }
-}
-
-
-// Heeft de ingelogde gebruiker een bepaalde rol
-function hasRole($role): bool
-{
-    return ($_SESSION['user'] ?? false) and ($_SESSION['user']['role'] ?? '') == $role;
-}
-
-//betreft het een ingelogde gebruiker? (authenticatie)
-function auth(): bool
-{
-    return ($_SESSION['user']['id'] ?? false);
-}
-
-// geeft de gegevens van de ingelogde gebruiker terug
-// te gebruiken: user()->email
-function user(): ?object
-{
-    return $_SESSION['user']
-        ? (object)$_SESSION['user']
-        : null;
 }
 
 //zal een flash message tonen aan de gebruiker, de opmaak is aan te passen in parts/footer.view
@@ -115,35 +88,22 @@ function csrf($field = true): string
     }
 }
 
-//Voor Content Security Policy
-function getNonce(): string
+function hasRole($role): bool
 {
-    if (!isset($_SESSION['nonce'])) {
-        $bytes = random_bytes(20);
-        $_SESSION['nonce'] = bin2hex($bytes);
-    }
-    return $_SESSION['nonce'];
+    return ($_SESSION['user'] ?? false) and ($_SESSION['user']['role'] ?? '') == $role;
 }
 
-// faken van PUT, DELETE, PATCH method bij het versturen van een formulier
-function method_put(): string
+//betreft het een ingelogde gebruiker? (authenticatie)
+function auth(): bool
 {
-    return "<input type=\"hidden\" name=\"_method\" value=\"PUT\">";
+    return ($_SESSION['user']['id'] ?? false);
 }
 
-function method_delete(): string
+// geeft de gegevens van de ingelogde gebruiker terug
+// te gebruiken: user()->email
+function user(): ?object
 {
-    return "<input type=\"hidden\" name=\"_method\" value=\"DELETE\">";
-}
-
-function method_patch(): string
-{
-    return "<input type=\"hidden\" name=\"_method\" value=\"PATCH\">";
-}
-
-//Doorsturen naar een andere pagina
-function redirect($url, $statusCode = 303)
-{
-    header('Location: ' . $url, true, $statusCode);
-    die();
+    return $_SESSION['user']
+        ? (object)$_SESSION['user']
+        : null;
 }
