@@ -17,6 +17,12 @@ $route->post('post-update/{id}', "controllers/post-update.php");
 $route->get('login', "views/login.view.php");
 $route->post('login', "controllers/login.php");
 $route->get('logout', "controllers/logout.php");
+
+if (auth()) { //alleen als je ingelogd bent kan je dit doen
+    $route->get('api/users-search', "controllers/api/users-search.php");
+    $route->get('users', "views/users-search.view.php");
+}
+
 //voorbeeld voor berichten
 $route->resource('berichten');
 //dit maakt de volgende routes aan (onderstaande mag je verwijderen)

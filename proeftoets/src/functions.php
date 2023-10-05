@@ -107,36 +107,3 @@ function user(): ?object
         ? (object)$_SESSION['user']
         : null;
 }
-
-//Voor Content Security Policy
-function getNonce(): string
-{
-    if (!isset($_SESSION['nonce'])) {
-        $bytes = random_bytes(20);
-        $_SESSION['nonce'] = bin2hex($bytes);
-    }
-    return $_SESSION['nonce'];
-}
-
-// faken van PUT, DELETE, PATCH method bij het versturen van een formulier
-function method_put(): string
-{
-    return "<input type=\"hidden\" name=\"_method\" value=\"PUT\">";
-}
-
-function method_delete(): string
-{
-    return "<input type=\"hidden\" name=\"_method\" value=\"DELETE\">";
-}
-
-function method_patch(): string
-{
-    return "<input type=\"hidden\" name=\"_method\" value=\"PATCH\">";
-}
-
-//Doorsturen naar een andere pagina
-function redirect($url, $statusCode = 303)
-{
-    header('Location: ' . $url, true, $statusCode);
-    die();
-}
