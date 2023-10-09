@@ -421,3 +421,19 @@ Validator::between($var, $min, $max); // $var zit tussen $min en $max (inclusief
 Validator::in($var, $array);       // $var komt voor in de array $array
 Validator::notIn($var, $array);     // $var komt niet voor in de array $array
 Validator::regex($var, $regex);     // $var voldoet aan de gegeven regex expressie
+
+
+/*  SQL query voorbeelden
+-- Voorbeeld van een query met AND en OR
+SELECT *
+FROM leerlingen
+WHERE plaats = 'utrecht'
+AND (achternaam LIKE '%p%'
+OR voornaam LIKE '%p%');
+
+-- Voorbeeld van een query met meerdere tabellen
+SELECT *
+FROM auteurs, boeken
+WHERE auteurs.auteurnr = boeken.auteurnr
+AND boeken.titel = 'Au pair!';
+*/
