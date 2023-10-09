@@ -32,7 +32,7 @@ if ($_POST != null) {
         $db->query("INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)", [
             $_POST['title'],
             $_POST['content'],
-            63, // user_id hard coded wordt later vervangen door
+            $_SESSION['user']['id'], // user_id uit de session
         ]);
 
         //hier kan je alleen komen als de query goed is uitgevoerd

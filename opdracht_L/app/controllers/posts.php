@@ -9,7 +9,7 @@ if ($_GET != null) {
     //$result = $db->query("SELECT * FROM posts WHERE title LIKE '%{$_GET['search']}%' or content LIKE '%{$_GET['search']}%'")->fetchAll();
 
     //onderstaande query is wel veilig tegen SQL injection (en is ook overzichtelijker)
-    $result = $db->query("SELECT * FROM posts WHERE title LIKE ? or content LIKE ?", [
+    $result = $db->query("SELECT * FROM posts, users WHERE posts.user_id = users.id AND title LIKE ? or content LIKE ?", [
         "%{$_GET['search']}%",
         "%{$_GET['search']}%"
     ])->fetchAll();
@@ -22,7 +22,7 @@ if ($_GET != null) {
 } //als er geen zoekterm is ingevoerd
 else {
     //selecteer alle posts
-    $result = $db->query("SELECT * FROM posts")->fetchAll();
+    $result = $db->query("SELECT * FROM posts, users WHERE posts.user_id = users.id")->fetchAll();
 }
 
 //laat de view zien en stuur de posts mee

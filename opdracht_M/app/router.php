@@ -8,7 +8,9 @@ $route->get('index', "controllers/home.php");
 $route->get('contact', "controllers/contact.php");
 $route->get('about', "controllers/about.php");
 $route->get('posts', "controllers/posts.php");
-$route->get('post-create', "views/post-create.view.php");
+if (auth()) {
+    $route->get('post-create', "views/post-create.view.php");
+}
 $route->post('post-store', "controllers/post-store.php");
 $route->post('post-destroy', "controllers/post-destroy.php");
 $route->get('post-edit/{id}', "controllers/post-edit.php");

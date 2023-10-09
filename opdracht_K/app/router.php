@@ -27,7 +27,7 @@ $route->resource('berichten');
 //$route->delete('berichten/{id}','controllers/berichten/destroy.php');
 
 //Alleen als je ingelogd bent
-if (isLogin()) {
+if (auth()) {
     //hier komen routes die je alleen kan bereiken als je ingelogd bent
     //$route->get('profile','controllers/profile.php');
 }
