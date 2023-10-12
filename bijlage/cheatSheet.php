@@ -303,10 +303,17 @@ flash("Post is opgeslagen", true, 3000); //true = succes, 3000 = 3 seconden
     <input type="hidden" name="id" value="1">
 
     <!-- submit button -->
-    <input type="submit" value="Opslaan" name="save">
+    <input type="submit" value="Opslaan" name="save" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
 
     <!-- of button -->
-    <button type="submit" name="save">Opslaan</button>
+    <button type="submit" name="save" class="border border-1 rounded-md px-2 py-1 hover:bg-gray-100 cursor-pointer">
+        Opslaan
+    </button>
+
+    <!-- validatie bij een form field -->
+<?php if (isset($errors['veldnaam'])): ?>
+    <p class="text-red-500 text-sm my-2"><?= $errors['veldnaam'] ?></p>
+<?php endif; ?>
 <?php
 ////////////////////////////////////////
 /////////////// Sessions ///////////////
@@ -421,3 +428,25 @@ Validator::between($var, $min, $max); // $var zit tussen $min en $max (inclusief
 Validator::in($var, $array);       // $var komt voor in de array $array
 Validator::notIn($var, $array);     // $var komt niet voor in de array $array
 Validator::regex($var, $regex);     // $var voldoet aan de gegeven regex expressie
+
+//voorbeeld van het gebruik van validators
+require "../src/Validator.php";
+$errors = [];
+if (!Validator::required($_POST['naam'])) {
+    $errors['naam'] = "Naam is verplicht";
+}
+
+/*  SQL query voorbeelden
+-- Voorbeeld van een query met AND en OR
+SELECT *
+FROM leerlingen
+WHERE plaats = 'utrecht'
+AND (achternaam LIKE '%p%'
+OR voornaam LIKE '%p%');
+
+-- Voorbeeld van een query met meerdere tabellen
+SELECT *
+FROM auteurs, boeken
+WHERE auteurs.auteurnr = boeken.auteurnr
+AND boeken.titel = 'Au pair!';
+*/

@@ -2,15 +2,15 @@
 return [
     'app' => [
         'env' => 'development',
-        'name' => 'Code Wizards',
-        'email' => 'info@code-wizards.nl',
+        'name' => 'Agenda', //1pt
+        'email' => 'info@agenda-mail.nl', //1pt
     ],
     'database' => [
         'user' => 'root',
-        'password' => 'usbw',
+        'password' => 'secret', //Let op bij jullie is het usbw
         'port' => 3306,
         'host' => 'localhost',
-        'dbname' => 'code_wizards',
+        'dbname' => 'agenda', //1pt
         'charset' => 'utf8mb4',
     ],
 ];

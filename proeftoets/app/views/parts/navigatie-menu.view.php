@@ -8,6 +8,15 @@
             <a href="/" class="<?= isUri("") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">Home</a>
             <a href="/contact" class="<?= isUri("contact") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">Contact</a>
             <a href="/about" class="<?= isUri("about") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">About</a>
+            <!-- onderstaande regel 2pt (opgave 2)-->
+            <a href="/afspraak-invoeren" class="<?= isUri("afspraak-invoeren") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">Maak
+                Afspraak</a>
+            <!-- onderstaande regel 2pt (opgave 3)-->
+            <a href="/afspraken" class="<?= isUri("afspraken") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">Afspraken
+            </a>
+            <!-- onderstaande regel 2pt (opgave 4)-->
+            <a href="/klanten" class="<?= isUri("klanten") ? 'underline ' : '' ?>text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md font-medium">Klanten
+            </a>
         </div>
         <div class="justify-end">
             <?php if (auth()): ?>

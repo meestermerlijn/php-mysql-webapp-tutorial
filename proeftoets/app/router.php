@@ -12,6 +12,24 @@ $route->get('login', "views/login.view.php");
 $route->post('login', "controllers/login.php");
 $route->get('logout', "controllers/logout.php");
 
+//opdracht 2
+$route->get('afspraak-invoeren', "controllers/afspraak.php"); //1pt
+$route->post('afspraak-invoeren', "controllers/afspraak-store.php"); //1pt
+//einde opdracht 2
+
+//opdracht 3
+$route->get('afspraken', "controllers/afspraken.php"); //1pt
+$route->post('afspraak-destroy/{id}', "controllers/afspraak-destroy.php"); //1pt
+//of
+//$route->post('afspraak-destroy', "controllers/afspraak-destroy.php"); //1pt
+//einde opdracht 3
+
+//opdracht 4
+$route->get('klanten', "controllers/klanten.php"); //1pt
+$route->get('klant-edit/{id}', "controllers/klant-edit.php"); //1pt
+$route->post('klant-update/{id}', "controllers/klant-update.php"); //1pt
+//einde opdracht 4
+
 if (auth()) { //alleen als je ingelogd bent kan je dit doen
     $route->get('api/users-search', "controllers/api/users-search.php");
     $route->get('users', "views/users-search.view.php");

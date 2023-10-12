@@ -7,7 +7,7 @@ class Validator
         if (is_array($data)) {
             return array_map('trim', $data);
         }
-        return trim($data);
+        return trim($data ?? '');
     }
 
     public static function required(mixed &$data): bool
