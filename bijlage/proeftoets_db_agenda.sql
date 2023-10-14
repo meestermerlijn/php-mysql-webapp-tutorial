@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `users`
     `password`   varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `name`       varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
     `role`       varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci           DEFAULT NULL,
-    `created_at` timestamp                                                     NOT NULL DEFAULT (now()),
-    `updated_at` timestamp                                                     NOT NULL DEFAULT (now()),
+    `created_at` TIMESTAMP                                                     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP                                                              DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     `deleted_at` timestamp                                                     NULL     DEFAULT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `email` (`email`)
