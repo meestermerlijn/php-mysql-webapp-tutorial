@@ -18,7 +18,7 @@ if (auth()) { //alleen als je ingelogd bent kan je dit doen
 }
 
 //voorbeeld voor berichten
-$route->resource('berichten');
+//$route->resource('berichten');
 //dit maakt de volgende routes aan (onderstaande mag je verwijderen)
 //$route->get('berichten','controllers/berichten/index.php');
 //$route->get('berichten/create','controllers/berichten/create.php');

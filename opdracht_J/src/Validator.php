@@ -46,19 +46,19 @@ class Validator
         return strtotime($data);
     }
 
-    public static function min(mixed &$data, int $min): bool
+    public static function min(mixed &$data, int|float $min): bool
     {
         self::trim($data);
         return $data >= $min;
     }
 
-    public static function max(mixed &$data, int $max): bool
+    public static function max(mixed &$data, int|float $max): bool
     {
         self::trim($data);
         return $data <= $max;
     }
 
-    public static function between(mixed &$data, int $min, int $max): bool
+    public static function between(mixed &$data, float|int $min, float|int $max): bool
     {
         self::trim($data);
         return $data >= $min && $data <= $max;

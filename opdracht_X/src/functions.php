@@ -107,3 +107,26 @@ function user(): ?object
         ? (object)$_SESSION['user']
         : null;
 }
+
+// faken van PUT, DELETE, PATCH method bij het versturen van een formulier
+function method_put(): string
+{
+    return "<input type=\"hidden\" name=\"_method\" value=\"PUT\">";
+}
+
+function method_delete(): string
+{
+    return "<input type=\"hidden\" name=\"_method\" value=\"DELETE\">";
+}
+
+function method_patch(): string
+{
+    return "<input type=\"hidden\" name=\"_method\" value=\"PATCH\">";
+}
+
+//Doorsturen naar een andere pagina
+function redirect($url, $statusCode = 303)
+{
+    header('Location: ' . $url, true, $statusCode);
+    die();
+}
