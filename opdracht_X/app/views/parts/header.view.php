@@ -8,5 +8,6 @@
     <script src="/scripts/tailwind.min.js"></script>
     <script defer src="/scripts/alpine.min.js"></script>
     <script src="/scripts/axios.min.js"></script>
+    <link rel="stylesheet" href="/styles/default.css">
 </head>
 <body>

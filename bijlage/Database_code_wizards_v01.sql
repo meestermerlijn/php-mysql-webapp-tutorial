@@ -33,7 +33,6 @@ CREATE TABLE IF NOT EXISTS `posts`
     KEY `FK__users` (`user_id`),
     CONSTRAINT `FK__users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 62
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci;
 
@@ -227,7 +226,7 @@ VALUES (1, 61, 'Ea quae sed ut tempora ex.',
 CREATE TABLE IF NOT EXISTS `users`
 (
     `id`         int(10) unsigned                        NOT NULL AUTO_INCREMENT,
-    `email`      varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+    `email`      varchar(255) COLLATE latin1_general_ci  NOT NULL,
     `password`   varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
     `name`       varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
     `role`       varchar(25) COLLATE utf8mb4_general_ci           DEFAULT NULL,
@@ -237,7 +236,6 @@ CREATE TABLE IF NOT EXISTS `users`
     PRIMARY KEY (`id`),
     UNIQUE KEY `email` (`email`)
 ) ENGINE = InnoDB
-  AUTO_INCREMENT = 91
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_general_ci;
 

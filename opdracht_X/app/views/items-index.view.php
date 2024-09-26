@@ -16,14 +16,18 @@ view("parts/navigatie-menu");
                 <a href="/items/<?= $item['id'] ?>" class="text-indigo-600">
                     <?= $item['naam'] ?>
                 </a>
-                <form method="post" action="/items/<?= $item['id'] ?>">
-                    <?= csrf(); ?>
-                    <?= method_delete(); ?>
-                    <input type="submit" value="Verwijderen" class="bg-red-600 text-white rounded py-1 px-2 hover:bg-red-400 cursor-pointer">
-                </form>
+                <?php
+                view('parts/delete-button', [
+                    'action' => "/items/{$item['id']}",
+                    'titel' => 'Delete',
+                    'content' => 'Are you sure?',
+                    'class' => 'inline-block'
+                ]);
+                ?>
             </li>
         <?php endforeach; ?>
     </ul>
+
 
 <?php
 view("parts/footer");
